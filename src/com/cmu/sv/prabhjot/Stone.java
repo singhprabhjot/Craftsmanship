@@ -7,7 +7,6 @@ public class Stone {
 		Stone stoneObj=new Stone();
 		int arrayLength=4;
 		int resultsArray[]=stoneObj.getNumbers(arrayLength);
-		
 		stoneObj.printResult(resultsArray);
 		stoneObj.testNumbers(resultsArray);
 	}
