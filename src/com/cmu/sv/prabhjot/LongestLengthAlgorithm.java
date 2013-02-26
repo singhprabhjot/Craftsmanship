@@ -1,15 +1,18 @@
 package com.cmu.sv.prabhjot;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+/*
+ * You are given an Array of numbers and they are unsorted/random order. 
+ * You are supposed to find the longest sequence of consecutive numbers in the array. 
+ * Note the sequence need not be in sorted order within the array. Here is an example :
+ * The solution needs to be of O(n) complexity.
+*/
+
 public class LongestLengthAlgorithm {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		LongestLengthAlgorithm llaObj=new LongestLengthAlgorithm();
 		int inputArray[]= llaObj.getInput();
@@ -38,29 +41,27 @@ public class LongestLengthAlgorithm {
 
 
 	private int[] findLongestRun(int[] inputArray) {
-		Set setOfInputElements= convertArrayToSet(inputArray);
-		
+		Set<Integer> setOfInputElements = convertArrayToSet(inputArray);
 		int maxLengthOfRun=1;
 		int[] longestLengthArrayBoundaries={0,0};	
-		Iterator itrObj = setOfInputElements.iterator();
+		Iterator<Integer> itrObj = setOfInputElements.iterator();
 		
 		while (itrObj.hasNext()) {
-			int elementInSet = (Integer) itrObj.next();
+			int currentElementInSet = (Integer) itrObj.next();
 			itrObj.remove();
-			int lastForwardValue=findForwardBoundary(setOfInputElements,elementInSet);
-			int lastBackwardValue=findBackwardBoundary(setOfInputElements,elementInSet);
+			int lastForwardValue=findForwardBoundary(setOfInputElements,currentElementInSet);
+			int lastBackwardValue=findBackwardBoundary(setOfInputElements,currentElementInSet);
 			if (maxLengthOfRun<(lastForwardValue-lastBackwardValue)){
 				maxLengthOfRun=lastForwardValue-lastBackwardValue;
-				longestLengthArrayBoundaries[1]=lastForwardValue;
 				longestLengthArrayBoundaries[0]=lastBackwardValue;
+				longestLengthArrayBoundaries[1]=lastForwardValue;
 			}
-
 		}	
 		return longestLengthArrayBoundaries;
 	}
 
 
-	private int findBackwardBoundary(Set setOfInputElements,
+	private int findBackwardBoundary(Set<Integer> setOfInputElements,
 			int elementInSet) {
 		int lastBackwardValue=elementInSet;		
 		while (setOfInputElements.contains(lastBackwardValue-1)){
@@ -72,7 +73,7 @@ public class LongestLengthAlgorithm {
 
 
 
-	private int findForwardBoundary(Set setOfInputElements,
+	private int findForwardBoundary(Set<Integer> setOfInputElements,
 			int elementInSet) {
 		int lastForwardValue=elementInSet;			
 		while (setOfInputElements.contains(lastForwardValue+1)){
@@ -88,9 +89,8 @@ public class LongestLengthAlgorithm {
 		return inputArray;
 	}
 
-	
-	  public  Set convertArrayToSet(int[] inputArray) {
-	      Set resultSet = new HashSet();
+	  public  Set<Integer> convertArrayToSet(int[] inputArray) {
+	      Set<Integer> resultSet = new HashSet<Integer>();
 	      for (int i = 0; i < inputArray.length; i++) {
 	          resultSet.add((inputArray[i]));
 	      }	      
