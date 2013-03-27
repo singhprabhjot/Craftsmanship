@@ -4,11 +4,11 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestPalidrome extends PalindromeAlgorithm{
+public class TestPalidrome extends PalindromeNewAlgorithm{
 
 	@Test
 	public void testPalidrome() {
-		PalindromeAlgorithm objPalAlgorithm=new PalindromeAlgorithm();
+		PalindromeNewAlgorithm objPalAlgorithm=new PalindromeNewAlgorithm();
 		String testString="";
 		
 		//check for correct palindrome
@@ -21,6 +21,9 @@ public class TestPalidrome extends PalindromeAlgorithm{
 		
 		//check for even no of characters
 		testString="ABCCBA";
+		assertEquals(true, objPalAlgorithm.checkForPalindrome(testString));
+
+		testString="bananab";
 		assertEquals(true, objPalAlgorithm.checkForPalindrome(testString));
 		
 		//check for wrong palindrome
