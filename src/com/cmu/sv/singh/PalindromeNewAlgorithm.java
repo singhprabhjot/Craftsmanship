@@ -7,8 +7,8 @@ public class PalindromeNewAlgorithm {
 	public static void main(String[] args) {
 		PalindromeNewAlgorithm pldNewAlgoObj=new PalindromeNewAlgorithm();
 		String inputString=pldNewAlgoObj.getInputString();
-		boolean result=pldNewAlgoObj.checkForPalindrome(inputString);
-		System.out.println(result);
+		boolean isPalindrome=pldNewAlgoObj.checkForPalindrome(inputString);
+		pldNewAlgoObj.printResult(isPalindrome);
 	}
 
 	private String getInputString() {
@@ -42,5 +42,14 @@ public class PalindromeNewAlgorithm {
 			return false;
 		}
 		return true;
+	}
+	
+	private void printResult(boolean isPalindrome) {
+		if (isPalindrome){
+			System.out.print("Entered string is a Palindrome");
+		}
+		else {
+			System.out.print("Entered string is not a Palindrome");
+		}		
 	}
 }
