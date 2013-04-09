@@ -1,0 +1,63 @@
+You're going to implement the OkCupid matching/ranking function. OkCupid is an online dating site that has a simple but effective matching algorithm described here:
+
+http://www.okcupid.com/help/match-percentages
+
+Write a program that reads a dataset of user profiles from stdin (represented in JSON; see attached input file) and writes the top 10 matches for each user profile to stdout (also in JSON).
+
+You have 90 minutes to complete (from the time you receive the email) the problem. Reply to this email with your program and your output by the ending time.
+
+We'll review your code and provide feedback. Optionally, if you'd like an additional 30 minutes to improve the code for readability/maintainability, you can submit new code by the 120 minute mark.
+
+Hints!
+
+- The goal is to produce a high-quality, testable, maintainable implementation of the algorithm. Code should be self-documenting and easy to read. We're not testing for algorithmic creativity, terribly clever implementations, etc.
+
+- The guts of the algorithm is more important to me than the JSON in/out. Consider that when prioritizing.
+
+- Any language is acceptable -- pick the one you're most proficient in (and pick one that makes JSON parsing simple; if you're using Java, Google's Gson is a good choice).
+
+- Being time and space efficient is not as important as clear, understandable code here. Think about how space/time inefficient your simple solution is, however. Think about the data structures and operations you're using.
+
+- If you finish early, go back and refactor any code that you think is ugly. Be prepared to tell me what you're least proud of and would like to improve if you had time.
+
+A few notes on the input format:
+- The 'importance' field is in the range [0,4] and is the index into an array that defines the weights as described in the OkCupid docs, ala: private static final int[] IMPORTANCE_POINTS = new int[]{0, 1, 10, 50, 250};
+
+- Answers are always in the range [0,3]
+
+- The size of the acceptable answer set is between 1 and 3. 0 and 4 are non-sensical.
+
+
+The output is formatted as follows:
+{
+"results": [
+{
+"profileId": 0,
+"scores": [
+{
+"profileId": 2,
+"score": 0.87
+},
+{
+"profileId": 1,
+"score": 0.65
+},
+]
+},
+{
+"profileId": 1,
+"scores": [
+{
+"profileId": 0,
+"score": 0.65
+},
+{
+"profileId": 2,
+"score": 0.5
+}
+]
+}
+]
+}
+
+Good luck!
